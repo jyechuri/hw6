@@ -96,7 +96,7 @@ bool boggleHelper(const std::set<std::string>& dict, const std::set<std::string>
 {
   // add your solution here!
 	// base case: within bounds r = row, c = col
-	if (r >= board.size() || c >= board[r].size())
+	if (r >= board.size() || c >= board.size())
   {
     return false;
   }
@@ -104,10 +104,13 @@ bool boggleHelper(const std::set<std::string>& dict, const std::set<std::string>
 	
   // move
   bool boolBoggle = boggleHelper(dict, prefix, board, word, result, r+ dr, c + dc, dr, dc);
-	if(!boolBoggle &&  (dict.count(word) > 0))
+	if(!boolBoggle)
 	{
-		result.insert(word);
-		return true;
+    if ( dict.count(word) > 0)
+		{
+      result.insert(word);
+		  return true;
+    }
 	}
 
   if (prefix.count(word) == 0)
